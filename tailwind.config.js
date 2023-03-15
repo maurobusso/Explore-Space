@@ -12,3 +12,5 @@ module.exports = {
     require('flowbite/plugin')
   ],
 }
+
+// run this command in the terminal for tailwind npx tailwindcss -i src/style.css -o dist/output.css --watch

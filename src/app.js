@@ -3,8 +3,6 @@ document.querySelector('#mars-btn').addEventListener('click', getImg)
 
 // api_key=CXXAK22dTXAyMSz3hgggh5vaozq4qYbLD874klUW
 
-// run this command in the terminal for tailwind npx tailwindcss -i src/style.css -o dist/output.css --watch
-
 //asteroids info
 
 function getAsteroidsInfo(){
