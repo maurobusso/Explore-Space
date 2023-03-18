@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nasa API</title>
+    <link href="output.css" rel="stylesheet">
+</head>
+<body class="m-6 bg-blue-900">
+    <div style="background-image: url(images/r&m.png)" class="bg-no-repeat bg-cover h-52 rounded-lg">
+        <h1 class=" text-white text text-6xl font-bold tracking-tight leading-none lg:text-8xl dark:text-white  text-borded-black">Explore Space</h1>
+    </div>
+
+    <section class="bg-blue-300 mb-16 rounded-lg">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+            <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+                <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">Info about asteroids</h2>
+                <p>The Near Earth Object Web Service is a RESTful web service for near earth Asteroid information. Here it has been used to search for Asteroids closest to Earth. It is also possible to browse the overall data-set and in this case name, speed, and size were gathered for every object considered potentially dangerous.
+                Data-set: All the data is from the NASA JPL Asteroid team <a href="http://neo.jpl.nasa.gov/">http://neo.jpl.nasa.gov/</a>.</p>
+            </div>
+        </div>
+        <dl class="text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700 px-4">
+            <div class="flex flex-col pb-3">
+                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Number of asteroid near Earth:</dt>
+                <dd class="text-lg font-semibold" id="number-of-asteroids"></dd>
+            </div>
+            <div class="flex flex-col py-3">
+                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Number of potentially dangerous asteroid:</dt>
+                <dd class="text-lg font-semibold" id="dangerous-asteroids"></dd>
+            </div>
+            <div class="flex flex-col pt-3">
+                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Details:</dt>
+                <dd class="text-lg font-semibold mb-4" id="list-of-dangerous-asteroids"></dd>
+            </div>
+        </dl>
+    </section>
+
+    <section class="bg-blue-300 rounded-lg px-6">
+        <br class="mx-auto max-w-screen-xl py-16">
+            <h2 class="m-2 my-8 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">Daily image from NASA</h2>
+            <p class="mx-4 mb-8 text-2xl tracking-tight font-bold text-gray-900 dark:text-white">One of the most popular websites at NASA is the Astronomy Picture of the Day. In fact, this website is one of the most popular websites across all federal agencies.   
+            </p>
+            <p class="text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700 px-4">Each day a different image or photograph of our universe is featured, along with a brief explanation written by a professional astronomer.</p><br>
+            <p class="text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700 px-4">You can also explore previus images by selecting the date down below.</p>
+            </p>
+            <div class="m-16">  
+                <input id="daily-img" type="date" class="dark:bg-gray-900">
+                <button id="img" type="button" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 my-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">get picture</button>
+            </div>    
+            <img id="today-img" src="images/rick-and-morty-wallpaper-hd-live-wallpaper.jpg" class="h-auto w-12/13 rounded-lg mb-16">
+            <h3 id="title" class="mb-16 text-4xl tracking-tight font-bold text-gray-900 dark:text-white px-4"></h3>
+            <div id="explanation" class="font-light text-gray-500 dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left mb-16 pb-4 px-4"></div>
+        </div>
+    </section>  
+
+    <section class="bg-blue-300 py-16 px-6 rounded-lg ">
+        <h2 class="mb-8 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">Random image from Mars</h2>
+        <p class="mb-4 text-2xl tracking-tight font-bold text-gray-900 dark:text-white">By clicking this button you will be able to see a randomized image from the colection gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars.</p>
+        <button id="mars-btn" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-4 ml-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">get picture</button>
+        <img id="mars-img" src="images/RnM.png" class="h-auto w-12/13 rounded-lg mb-8 mx-auto">
+        <ul id="info" style="list-style: none" class="text-gray-500 sm:text-lg dark:text-gray-400 pb-8">
+            <li id="roverName"></li>
+            <li id="earth_date"></li>
+            <li id="camera"></li>
+        </ul>
+    </section>  
+    
+    <script src="app.js"></script>
+    <script src="node_modules/flowbite/dist/flowbite.min.js"></script>
+</body>
+</html>
