@@ -66,6 +66,7 @@
     "yaml": "^1.10.2"
   },
   "scripts": {
+    "build": "tailwindcss build styles.css -o main.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
