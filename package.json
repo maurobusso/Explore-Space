@@ -4,7 +4,7 @@
   },
   "name": "nasa-api",
   "version": "1.0.0",
-  "main": "index.html",
+  "main": "app.js",
   "dependencies": {
     "acorn": "^7.4.1",
     "acorn-node": "^1.8.2",
@@ -66,7 +66,6 @@
     "yaml": "^1.10.2"
   },
   "scripts": {
-    "build": "npm install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
