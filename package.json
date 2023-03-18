@@ -4,7 +4,7 @@
   },
   "name": "nasa-api",
   "version": "1.0.0",
-  "main": "index.html",
+  "main": "app.js",
   "dependencies": {
     "acorn": "^7.4.1",
     "acorn-node": "^1.8.2",
