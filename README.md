@@ -9,6 +9,6 @@ Optimizations:
 
 These are some of the optimization that will be implemented in the future, or bug that will adressed.
 - Display an error when user select a date future date in the "Daily image from nasa" section.
--Adding a loading spinner when image is wating for the server to responde.
--Handle the video type when the date from nasa includes a video rather than an image
+- Adding a loading spinner when image is wating for the server to responde.
+- Handle the video type when the date from nasa includes a video rather than an image
 
