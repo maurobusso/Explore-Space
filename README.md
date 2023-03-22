@@ -4,7 +4,7 @@ This is an MVP of my app that allow the user to fetch data from the nasa API and
 
 <a href="https://explore-space-app.netlify.app">Try now</a>
 
-<img width="700px" heigth="900" src="#">
+<img width="700px" heigth="900" src="https://github.com/maurobusso/Explore-Space/blob/main/explore-space.png">
 
 Optimizations:
 
