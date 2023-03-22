@@ -1,6 +1,6 @@
 # Explore-Space
 
-This is an MVP of my app that allow the user to fetch data from the nasa API and display iamges of ouf amazing universe.
+This is an app that allow the user to fetch data from the NASA API and display images of our amazing universe.
 
 <a href="https://explore-space-app.netlify.app">Try now</a>
 
