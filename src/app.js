@@ -3,77 +3,7 @@ document.querySelector('#mars-btn').addEventListener('click', getImg)
 
 // api_key=CXXAK22dTXAyMSz3hgggh5vaozq4qYbLD874klUW
 
-// run this command in the terminal for tailwind npx tailwindcss -i style.css -o output.css --watch
-
-// image of the day
-
-function getDailyPic(){
-    const choice = document.querySelector('#daily-img').value
-    const url = `https://api.nasa.gov/planetary/apod?api_key=CXXAK22dTXAyMSz3hgggh5vaozq4qYbLD874klUW&date=${choice}`
-
-    fetch(url)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            document.querySelector('#today-img').src = data.hdurl
-            document.querySelector('#explanation').innerText = `${data.explanation}`
-            document.querySelector('#title').innerText = `Title: ${data.title}`
-
-        })
-        .catch(err => {
-            let error = "sorry, there are no pictures available for this date, try to pick a different one."
-            console.log(`error ${err}`)
-        })
-}
-
-//Mars rover api
-
-function getImg(){
-
-        let rover = 'curiosity'
-        let randomRover = Math.floor(Math.random() * 3 ) + 1
-        if(randomRover == 1){
-            rover = 'curiosity'
-        }else if(randomRover == 2){
-            rover = 'Opportunity'
-        }else{
-            rover = 'Spirit'
-        }
-
-        let sol = Math.floor(Math.random() * 1000 ) + 1
-    
-
-    const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?api_key=CXXAK22dTXAyMSz3hgggh5vaozq4qYbLD874klUW&sol=${sol}`
-    
-    fetch(url)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-
-            const randomNumber = Math.floor(Math.random() * data.photos.length ) + 1
-
-            let image = data.photos[randomNumber].img_src
-
-            if(data.photos.length == 0){
-                getImg()
-            }
-            
-            document.querySelector('#mars-img').src = image
-
-            let camera = data.photos[randomNumber].camera.full_name
-            let roverName = data.photos[randomNumber].rover.name
-            let earth_date = data.photos[randomNumber].earth_date
-
-            document.querySelector('#roverName').innerText =  `This picture was taken by ${roverName}`
-            document.querySelector('#earth_date').innerText = `On the ${earth_date}`
-            document.querySelector('#camera').innerText = `From the ${camera}` 
-        })
-        .catch(err => {
-            let error = "sorry, there are no info available for this pictures"
-            document.querySelector('#info').innerHTML = error
-            console.log(`error ${err}`)
-        })
-}
+// run this command in the terminal for tailwind npx tailwindcss -i src/style.css -o dist/output.css --watch
 
 //asteroids info
 
@@ -144,3 +74,121 @@ function getAsteroidsInfo(){
 }
 
 getAsteroidsInfo()
+
+
+// image of the day
+
+function getDailyPic(){
+    document.querySelector('#today-img').src = ''
+
+    const todayDate = new Date()
+    const choice = document.querySelector('#daily-img').value
+    let choiceDate = new Date(choice)
+    
+    const url = `https://api.nasa.gov/planetary/apod?api_key=CXXAK22dTXAyMSz3hgggh5vaozq4qYbLD874klUW&date=${choice}`
+
+    displayLoading()
+    
+    //this handle date if input is in the future
+    if(choiceDate > todayDate){
+        console.log('sorry that is the future')
+        document.querySelector('#today-img').src = ''
+        document.querySelector('#explanation').innerText = ``
+        document.querySelector('#title').innerText = `Sorry you can't select dates that are in the future!`
+        hideLoading()
+    }else{
+        //handle video types
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                hideLoading()
+                console.log(data)
+                document.querySelector('#today-img').src = data.hdurl
+                document.querySelector('#explanation').innerText = `${data.explanation}`
+                document.querySelector('#title').innerText = `Title: ${data.title}`
+
+            })
+            .catch(error => {
+                let err = "sorry, there are no pictures available for this date, try to pick a different one."
+                console.log(`error ${err}`)
+            })
+    }
+}
+
+//display and hide loading animation for daily image
+
+function displayLoading(){
+    const loader = document.querySelector('#loading')
+    loader.classList.remove('invisible')
+}
+
+function hideLoading(){
+    const loader = document.querySelector('#loading')
+    loader.classList.add('invisible')
+}
+
+
+//Mars rover api
+
+function getImg(){
+        document.querySelector('#mars-img').src = ''
+        displayLoadingMarsImg()
+
+        let rover = 'curiosity'
+        let randomRover = Math.floor(Math.random() * 3 ) + 1
+        if(randomRover == 1){
+            rover = 'curiosity'
+        }else if(randomRover == 2){
+            rover = 'Opportunity'
+        }else{
+            rover = 'Spirit'
+        }
+
+        let sol = Math.floor(Math.random() * 1000 ) + 1
+    
+
+    const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?api_key=CXXAK22dTXAyMSz3hgggh5vaozq4qYbLD874klUW&sol=${sol}`
+    
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            hideLoadingMarsImg()
+            const randomNumber = Math.floor(Math.random() * data.photos.length ) + 1
+
+            let image = data.photos[randomNumber].img_src
+
+            if(data.photos.length == 0){
+                getImg()
+            }
+            
+            document.querySelector('#mars-img').src = image
+
+            let camera = data.photos[randomNumber].camera.full_name
+            let roverName = data.photos[randomNumber].rover.name
+            let earth_date = data.photos[randomNumber].earth_date
+
+            document.querySelector('#roverName').innerText =  `This picture was taken by ${roverName}`
+            document.querySelector('#earth_date').innerText = `On the ${earth_date}`
+            document.querySelector('#camera').innerText = `From the ${camera}` 
+        })
+        .catch(err => {
+            let error = "sorry, there are no info available for this pictures"
+            document.querySelector('#info').innerHTML = error
+            console.log(`error ${err}`)
+        })
+
+
+    }
+
+    //display and hide loading animation for mars rover images
+    
+    function displayLoadingMarsImg(){
+        const loaderMars = document.querySelector('#loading-mars-img')
+        loaderMars.classList.remove('invisible')
+    }
+    
+    function hideLoadingMarsImg(){
+        const loaderMars = document.querySelector('#loading-mars-img')
+        loaderMars.classList.add('invisible')
+    }
