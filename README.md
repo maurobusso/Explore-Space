@@ -1,6 +1,6 @@
 # Explore-Space
 
-This is an app that allow the user to fetch data from the NASA API and display images of our amazing universe.
+This is an app that allow the user to fetch data from the NASA API and display images and some informations about our amazing universe.
 
 <a href="https://explore-space-app.netlify.app">Try now</a>
 
