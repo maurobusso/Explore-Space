@@ -4,7 +4,7 @@ This is an app that allow the user to fetch data from the NASA API and display i
 
 <a href="https://explore-space-app.netlify.app">Try now</a>
 
-<img width="700px" heigth="900" src="https://github.com/maurobusso/Explore-Space/blob/main/explore-space.png">
+<img width="700px" heigth="900" src="https://github.com/maurobusso/Explore-Space/blob/main/explore-space-tumbnail.png">
 
 Optimizations:
 
